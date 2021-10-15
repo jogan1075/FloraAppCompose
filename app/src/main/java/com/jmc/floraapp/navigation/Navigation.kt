@@ -4,9 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.jmc.floraapp.view.HomeScreen
-import com.jmc.floraapp.view.LoginScreen
-import com.jmc.floraapp.view.SplashScreen
+import com.jmc.floraapp.view.*
 
 @Composable
 fun Navigation() {
@@ -21,7 +19,15 @@ fun Navigation() {
         }
 
         composable(Screen.HomeScreen.route) {
-            HomeScreen(navController = navController)
+            Dashboard(navController = navController)
+        }
+
+        composable(Screen.DetailScreen.route) {
+            DetailScreen()
+        }
+
+        composable(Screen.ListScreen.route) {
+            ListScreen()
         }
     }
 }
