@@ -23,11 +23,15 @@ fun Navigation() {
         }
 
         composable(Screen.DetailScreen.route) {
-            DetailScreen()
+            DetailScreen(navController = navController)
         }
 
         composable(Screen.ListScreen.route) {
-            ListScreen()
+            ListScreen(navController = navController)
+        }
+
+        composable(Screen.CheckoutScreen.route) {
+            CheckoutScreen(navController = navController)
         }
     }
 }

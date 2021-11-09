@@ -1,8 +1,8 @@
 package com.jmc.floraapp.view
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material.*
@@ -25,9 +25,14 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import com.jmc.floraapp.R
+import com.jmc.floraapp.component.PageIndicator
 import com.jmc.floraapp.navigation.Screen
-import com.jmc.floraapp.ui.theme.*
+import com.jmc.floraapp.ui.theme.black
+import com.jmc.floraapp.ui.theme.colorPrimary
+import com.jmc.floraapp.ui.theme.ghost_white
+import com.jmc.floraapp.ui.theme.white
 
+@SuppressLint("StaticFieldLeak")
 lateinit var navControllerLocal: NavController
 
 @Composable
@@ -85,7 +90,8 @@ fun viewHome() {
 
                     SlidingBannerView()
                     Spacer(modifier = Modifier.padding(10.dp))
-                    PageIndicator(pageCount)
+                    val modifier = Modifier.fillMaxWidth()
+                    PageIndicator(pageCount, modifier)
                     Spacer(modifier = Modifier.padding(10.dp))
                     CategoryView()
                     Spacer(modifier = Modifier.padding(10.dp))
@@ -304,62 +310,6 @@ fun CategoryButton(icon: Painter, backgroundColor: Color) {
     }
 }
 
-@Composable
-fun PageIndicator(pageCount: Int) {
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.padding(horizontal = 16.dp)
-        ) {
-            Box(
-                modifier = Modifier
-                    .size(if (pageCount == 0) 10.dp else 8.dp)
-                    .clip(CircleShape)
-                    .background(if (pageCount == 0) dark_gray else Color.LightGray)
-            )
-            Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-            Box(
-                modifier = Modifier
-                    .size(if (pageCount == 1) 10.dp else 8.dp)
-                    .clip(CircleShape)
-                    .background(if (pageCount == 1) dark_gray else Color.LightGray)
-            )
-            Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-            Box(
-                modifier = Modifier
-                    .size(if (pageCount == 2) 10.dp else 8.dp)
-                    .clip(CircleShape)
-                    .background(if (pageCount == 2) dark_gray else Color.LightGray)
-            )
-            Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-
-            Box(
-                modifier = Modifier
-                    .size(if (pageCount == 3) 10.dp else 8.dp)
-                    .clip(CircleShape)
-                    .background(if (pageCount == 3) dark_gray else Color.LightGray)
-            )
-            Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-
-            Box(
-                modifier = Modifier
-                    .size(if (pageCount == 4) 10.dp else 8.dp)
-                    .clip(CircleShape)
-                    .background(if (pageCount == 4) dark_gray else Color.LightGray)
-            )
-            Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-
-
-        }
-
-
-    }
-}
 
 @Composable
 fun SlidingBannerView() {
